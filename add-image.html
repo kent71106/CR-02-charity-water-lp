@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Add image preview</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f7fbfb; }
+    .preview { margin-top: 1rem; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Preview a JPG before adding it to the project</h1>
+  <p>Select a JPG from your computer; the preview below shows how it will look. After previewing, copy the file into the <code>img/</code> folder and reference it in your HTML.</p>
+
+  <input type="file" id="fileInput" accept="image/jpeg,image/jpg">
+  <div class="preview" id="preview"></div>
+
+  <script>
+    const input = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      preview.innerHTML = `<p><strong>Preview:</strong></p><img src="${url}" alt="preview">`;
+    });
+  </script>
+</body>
+</html>

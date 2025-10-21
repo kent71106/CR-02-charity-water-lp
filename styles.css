@@ -1,134 +1,334 @@
-/* Reset */
+/* Reset default browser styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* layout variables */
+:root {
+  --sidebar-width: 200px;
+  --right-sidebar-width: 600px;
 }
 
 body {
-  background-color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f8f8;
 }
 
-/* Container Layout */
-.container {
-  display: grid;
-  grid-template-columns: 15% 50% 35%;
-  height: 100vh;
-}
-
-/* Sidebar */
+/* ---------- LEFT SIDEBAR ---------- */
 .sidebar {
-  background-color: #1e4a53;
-  color: white;
+  background-color: #204c54;
+  color: #ffffff;
+  width: var(--sidebar-width);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* let nav center itself vertically */
   padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  text-align: center; /* center any inline text */
 }
 
-.sidebar ul {
-  list-style: none;
-  text-align: center;
-}
-
-.sidebar li {
-  margin: 1.5rem 0;
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* align items to the left */
+  gap: 1rem;
+  width: 100%;
 }
 
 .sidebar a {
+  color: #ffffff;
   text-decoration: none;
-  color: white;
   font-weight: bold;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 .sidebar a:hover {
-  color: #cde9ed;
+  color: #ffeb3b;
 }
 
-.search {
-  font-size: 1.5rem;
-  margin-top: 2rem;
+.search-icon {
+  font-size: 1.2rem;
+  /* position the search control at the bottom-left of the sidebar */
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
 }
 
 .donate-btn {
-  background-color: #e5e8ec;
-  color: #1e4a53;
+  background-color: #f0f0f0;
+  color: #204c54;
   border: none;
-  border-radius: 25px;
   padding: 0.8rem 1.5rem;
+  border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .donate-btn:hover {
-  background-color: #fff;
+  background-color: #ffeb3b;
+  color: #000000;
 }
 
-/* Main Section */
+/* ---------- MAIN CONTENT ---------- */
 .main {
-  background: linear-gradient(to bottom right, #b4d8df, #e0f2f4);
+  margin-left: var(--sidebar-width);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  background: linear-gradient(to bottom right, #b7d5d8, #f2f6f7);
   padding: 2rem;
+}
+
+/* ---------- RIGHT SIDEBAR (YELLOW) ---------- */
+.right-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--right-sidebar-width);
+  background-color: #ffeb3b;
+  color: #0d2636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
-.main h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.main h1 span {
-  font-weight: bold;
-  color: #000;
-}
-
-.icon {
-  margin: 1rem 0;
-  font-size: 3rem;
-}
-
-/* Paragraph */
-.main p {
-  max-width: 400px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* Images Section */
-.images {
-  background-color: #f9f3e8;
+.right-sidebar nav {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* the right-sidebar top-nav was removed; top links moved to left sidebar */
+
+.right-sidebar .secondary-nav {
+  /* keep the existing centered nav behavior */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   align-items: center;
+}
+
+.sidebar-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+.sidebar-photos img {
+  width: calc(100% - 24px); /* give small padding inside sidebar */
+  /* allow images to grow larger so they better fill the 600px column */
+  max-width: calc(var(--right-sidebar-width) - 48px);
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Generic helper for placeholder images used anywhere in the page */
+.placeholder-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* cw_logo-2 fixed in the bottom-right above the right sidebar padding */
+.cw-logo {
+  /* place the logo inside the right sidebar and make it fill the available width */
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: calc(100% - 32px); /* fill sidebar horizontally minus padding */
+  max-width: calc(var(--right-sidebar-width) - 32px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  z-index: 10;
+}
+
+/* move main content in from the right so it sits between sidebars */
+.main {
+  margin-right: var(--right-sidebar-width);
+}
+
+.content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content span {
+  font-weight: bold;
+}
+
+.heart-hand {
+  width: 120px;
+  margin: 1rem 0;
+}
+
+.content p {
+  max-width: 400px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+/* ---------- IMAGES ON RIGHT ---------- */
+.images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
   padding: 1rem;
 }
 
 .images img {
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 1rem;
   object-fit: cover;
 }
 
-/* Footer Logo */
-.footer-logo {
+/* ---------- IMPACT STORY SECTION ---------- */
+.impact-section {
+  width: calc(100% - (var(--sidebar-width) + var(--right-sidebar-width)));
+  margin-left: var(--sidebar-width);
+  margin-right: var(--right-sidebar-width);
+  background-color: #ffffff;
+  padding: 2rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  color: #000;
-  margin-top: 1rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.footer-logo img {
-  width: 30px;
-  height: 30px;
+.impact-section img {
+  width: 40%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.impact-text {
+  flex: 1;
+}
+
+.impact-text h2 {
+  color: #204c54;
+  margin-bottom: 1rem;
+}
+
+/* ---------- DONATION SECTION ---------- */
+.donation-section {
+  width: calc(100% - (var(--sidebar-width) + var(--right-sidebar-width)));
+  margin-left: var(--sidebar-width);
+  margin-right: var(--right-sidebar-width);
+  background-color: #e3f2f4;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.donation-section h2 {
+  color: #204c54;
+  margin-bottom: 1rem;
+}
+
+.donation-section p {
+  margin-bottom: 2rem;
+  color: #333333;
+}
+
+.donation-section button {
+  background-color: #ffcc00;
+  color: #000000;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.donation-section button:hover {
+  background-color: #ffeb3b;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  /* hide the right sidebar on narrower screens */
+  .right-sidebar {
+    display: none;
+  }
+
+  .main,
+  .impact-section,
+  .donation-section {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .images {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .impact-section {
+    flex-direction: column;
+  }
+
+  .impact-section img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .heart-hand {
+    width: 90px;
+  }
+
+  .donation-section button {
+    width: 80%;
+  }
 }

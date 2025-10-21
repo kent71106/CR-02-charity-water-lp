@@ -1,55 +1,78 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="style.css" />
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charity Water - One Donation. Infinite Impact.</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="container">
-
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <div class="search">
-        <span>🔍</span>
-      </div>
-      <button class="donate-btn">Donate Here</button>
+  <!-- Sidebar navigation -->
+  <div class="sidebar">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
     </nav>
-
-    <!-- Main Section -->
-    <section class="main">
-      <div class="content">
-        <h1><span>One</span> Donation.<br><span>Infinite</span> Impact.</h1>
-        <div class="icon">
-          <div class="hand"></div>
-          <div class="heart">❤️</div>
-        </div>
-        <p>
-          With just a few clicks, you can help provide clean water to those in need.
-          Donating is fast, simple, and impactful—your support makes a world of difference and smiles!
-        </p>
-      </div>
-    </section>
-
-    <!-- Right Images Section -->
-    <aside class="images">
-      <img src="https://via.placeholder.com/600x300" alt="Person smiling with clean water" />
-      <img src="https://via.placeholder.com/600x300" alt="Woman drinking water and smiling" />
-      <div class="footer-logo">
-        <img src="https://via.placeholder.com/30x30" alt="charity: water logo" />
-        <p>charity: <strong>water</strong></p>
-      </div>
-    </aside>
-
+  <div class="search-icon">Search</div>
   </div>
+
+  <!-- Main section -->
+  <div class="main">
+    <div class="content">
+      <h1><span>One</span> Donation.<br><span>Infinite</span> Impact.</h1>
+
+      <!-- Placeholder for heart and hand image -->
+      <img src="https://via.placeholder.com/120x120.png?text=Heart+and+Hand" 
+           alt="Heart and hand graphic" class="heart-hand">
+
+      <p>
+        With just a few clicks, you can help provide clean water to those in need.
+        Donating is fast, simple, and impactful — your support makes a world of difference and smiles.
+      </p>
+    </div>
+
+    <!-- Right-side images (moved to right sidebar) -->
+    
+  </div>
+
+  <!-- Right sidebar (yellow) -->
+  <!-- Placeholder image snippets you can copy into your HTML
+       Example (copy one or both where you need them):
+       <img src="https://via.placeholder.com/400x250.png?text=Smiling+Child" alt="Smiling child" class="placeholder-img">
+       <img src="https://via.placeholder.com/400x250.png?text=Happy+Woman" alt="Happy woman" class="placeholder-img">
+  -->
+
+  <aside class="right-sidebar">
+    <!-- photos moved into the right sidebar -->
+    <div class="sidebar-photos">
+      <img src="img/smiling-child.png" alt="Smiling child drinking water" class="placeholder-img">
+      <img src="https://via.placeholder.com/400x250.png?text=Happy+Woman" alt="Happy woman with clean water" class="placeholder-img">
+    </div>
+    <!-- cw_logo-2 placed inside the right sidebar so it scales with the column -->
+    <img src="img/cw_logo-2.png" alt="Charity Water logo" class="cw-logo">
+  </aside>
+
+  <!-- Impact Story -->
+  <section class="impact-section">
+    <img src="https://via.placeholder.com/500x300.png?text=Community+Well" 
+         alt="Community impact photo">
+    <div class="impact-text">
+      <h2>Real-World Impact</h2>
+      <p>
+        In one village, your donations funded a new well that now serves over 300 people daily. 
+        Families no longer walk miles for clean water, and children can focus on school instead of collecting water.
+      </p>
+    </div>
+  </section>
+
+  <!-- Donation section -->
+  <section class="donation-section">
+    <h2>Make a Difference Today</h2>
+    <p>Every drop counts. Join us in bringing clean water to communities in need around the world.</p>
+    <button>Donate Now</button>
+  </section>
 
 </body>
 </html>
